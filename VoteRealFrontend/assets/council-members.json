@@ -1,0 +1,83 @@
+[
+    {
+      "name": "Kshama Sawant",
+      "email": "Kshama.Sawant@seattle.gov",
+      "phone": "206-684-8803",
+      "website": "https://www.seattle.gov/council/sawant",
+      "picture_uri": "https://www.seattle.gov/assets/Images/Council/Members/Sawant/Sawant_225x225.jpg",
+      "seat": "Position 3",
+      "party": "Democratic Socialist Party"
+    },
+    {
+      "name": "Sara Nelson",
+      "email": "Sara.Nelson@seattle.gov",
+      "phone": "206-684-8809",
+      "website": "https://www.seattle.gov/council/meet-the-council/sara-nelson",
+      "picture_uri": "https://www.seattle.gov/images/Council/Members/Nelson/nelson_300x300.jpg",
+      "seat": "Position 9",
+      "party": "Democrat"
+    }, 
+    {
+      "name": "Teresa Mosqueda",
+      "email": "Teresa.Mosqueda@seattle.gov",
+      "phone": "206-684-8808",
+      "website": "https://www.seattle.gov/council/mosqueda",
+      "picture_uri": "https://www.seattle.gov/assets/Images/Council/Members/Mosqueda/Mosqueda_225x225.jpg",
+      "seat": "Position 8",
+      "party": "Democrat"
+    }, 
+    {
+      "name": "Alex Pedersen",
+      "email": "Alex.Pedersen@seattle.gov",
+      "phone": "206-684-8804",
+      "website": "https://www.seattle.gov/council/pedersen",
+      "picture_uri": "https://www.seattle.gov/assets/Images/Council/Members/Pedersen/Councilmember-Alex-Pedersen_square-headshot.jpg",
+      "seat": "Position 4",
+      "party": "Democrat"
+    }, 
+    {
+      "name": "Andrew Lewis",
+      "email": "Andrew.Lewis@seattle.gov",
+      "phone": "206-684-8808",
+      "website": "https://www.seattle.gov/council/lewis",
+      "picture_uri": "https://www.seattle.gov/assets/Images/Council/Members/Lewis/Andrew-Lewis-Campaign-Headshot_300x300.jpg",
+      "seat": "Position 7",
+      "party": "Democrat"
+    }, 
+    {
+      "name": "Dan Strauss",
+      "email": "Dan.Strauss@seattle.gov",
+      "phone": "206-684-8806",
+      "website": "https://www.seattle.gov/council/strauss",
+      "picture_uri": "https://www.seattle.gov/assets/Images/Council/Members/Strauss/strauss_headshot_300x300.jpg",
+      "seat": "Position 6",
+      "party": "Democrat"
+    }, 
+    {
+      "name": "Debora Juarez",
+      "email": "Debora.Juarez@seattle.gov",
+      "phone": "206-684-8805",
+      "website": "https://seattle.gov/council/juarez",
+      "picture_uri": "https://www.seattle.gov/assets/Images/Council/Members/Juarez/Debora-Juarez-2018_225x225.jpg",
+      "seat": "Position 5",
+      "party": "Democrat"
+    }, 
+    {
+      "name": "Lisa Herbold",
+      "email": "Lisa.Herbold@seattle.gov",
+      "phone": "206-684-8801",
+      "website": "https://seattle.gov/council/herbold",
+      "picture_uri": "https://www.seattle.gov/assets/Images/Council/Members/Herbold/Herbold_225x225.jpg",
+      "seat": "Position 1",
+      "party": "Democrat"
+    }, 
+    {
+      "name": "Tammy J. Morales",
+      "email": "Tammy.Morales@seattle.gov",
+      "phone": "206-684-8802",
+      "website": "https://seattle.gov/council/morales",
+      "picture_uri": "https://www.seattle.gov/assets/Images/Council/Members/Morales/Tammy-Morales_headshot_final_300x300.jpg",
+      "seat": "Position 2",
+      "party": "Democrat"
+    }
+  ]

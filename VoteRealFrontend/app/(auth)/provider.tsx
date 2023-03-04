@@ -1,18 +1,11 @@
 import { useRouter, useSegments } from "expo-router";
 import { Platform } from 'react-native';
-import React, { useState, useRef, SetStateAction } from "react";
+import React, { useState, useRef, SetStateAction, useDeferredValue } from "react";
 import IUser from "../../models/IUser";
 import IVote from "../../models/IVote";
 import * as Device from 'expo-device';
 import * as Notifications from 'expo-notifications';
 
-Notifications.setNotificationHandler({
-  handleNotification: async () => ({
-    shouldShowAlert: true,
-    shouldPlaySound: false,
-    shouldSetBadge: false,
-  }),
-});
 
 async function registerForPushNotificationsAsync(): Promise<SetStateAction<string>> {
   let token: SetStateAction<string> = {} as SetStateAction<string>;
@@ -52,7 +45,7 @@ export interface IAuth {
     logIn: (login: { username: string, password: string }) => void;
     signUp: (user: IUser) => void;
     logOut: () => void;
-    vote: (vote: boolean) => void;
+    vote: (user: IUser, vote: boolean) => void;
 }
 
 const AuthContext = React.createContext<IAuth>({} as IAuth);
@@ -90,7 +83,6 @@ export function Provider(props: any) {
     });
     const router = useRouter();
     const [expoPushToken, setExpoPushToken] = useState('');
-    const [notification, setNotification] = useState({} as IVote);
     const notificationListener: any = useRef();
     const responseListener: any = useRef();
     
@@ -100,21 +92,25 @@ export function Provider(props: any) {
       registerForPushNotificationsAsync().then(token => setExpoPushToken(token));
   
       notificationListener.current = Notifications.addNotificationReceivedListener(notification => { 
-        let newUser: IUser = auth.user;
-        newUser.currVote = notification.request.content.data as IVote; 
-        setAuth(prevState => ({
-          ...prevState,
-          user: newUser
-        })); 
+        setAuth(prevState => {
+          let newUser: IUser = prevState.user;  
+          newUser.currVote = notification.request.content.data as IVote; 
+          return {
+            ...prevState,
+            user: newUser
+          }
+        })  
       });
   
       responseListener.current = Notifications.addNotificationResponseReceivedListener(response => {
-        let newUser: IUser = auth.user;
-        newUser.currVote = response.notification.request.content.data as IVote; 
-        setAuth(prevState => ({
-          ...prevState,
-          user: newUser
-        }));
+        setAuth(prevState => {
+          let newUser: IUser = prevState.user;  
+          newUser.currVote = response.notification.request.content.data as IVote; 
+          return {
+            ...prevState,
+            user: newUser
+          }
+        }) 
         router.replace('/(tabs)/vote');        
       });
   
@@ -128,9 +124,9 @@ export function Provider(props: any) {
         let newUser: IUser = {
           username: login.username,
           password: login.password,
-          councilMembers: [],
           votes: [],
-          currVote: null
+          currVote: null,
+          uuid: "1"
         }
         setAuth(prevState => ({
             ...prevState,
@@ -161,8 +157,12 @@ export function Provider(props: any) {
         }));
     };
 
-    const vote = (vote: boolean) => {
-      let newUser: IUser = auth.user; 
+    const vote = (user: IUser, vote: boolean) => {
+      let newUser: IUser = user; 
+      if (newUser.currVote) {
+        newUser.currVote.vote = vote;
+        newUser.votes.push(newUser.currVote); 
+      }
       newUser.currVote = null;
       setAuth(prevState => ({
           ...prevState,

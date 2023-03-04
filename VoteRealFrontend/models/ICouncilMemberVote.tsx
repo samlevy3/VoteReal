@@ -1,5 +1,4 @@
-import ICouncilMember from "./ICouncilMember"; 
 export default interface ICouncilMemberVote {
-    councilMember: ICouncilMember; 
+    councilMember: string; 
     vote: boolean; 
 }

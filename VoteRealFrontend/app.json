@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "VoteRealFrontend",
-    "slug": "VoteRealFrontend",
+    "slug": "votereal",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -16,7 +16,8 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.slevy56.VoteRealFrontend"
     },
     "android": {
       "adaptiveIcon": {
@@ -24,9 +25,20 @@
         "backgroundColor": "#ffffff"
       }
     },
+    "infoPlist": {
+      "UIBackgroundModes": [
+        "remote-notification"
+      ]
+    },
     "web": {
       "bundler": "metro",
       "favicon": "./assets/images/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "3fa3295c-6437-4915-b809-7482e678a690"
+      }
+    },
+    "owner": "slevy56"
   }
 }

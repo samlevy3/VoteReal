@@ -54,14 +54,14 @@ export default function SignUp() {
         <Button text="Submit" onPress={() => signUp({
           username: "slevy3",
           password: "12345",
-          councilMembers: [],
           votes: [],
           currVote: {
             bill: "CB 123",
             vote: false, 
             summary: [],
             councilVotes: []
-          }
+          },
+          uuid: "1"
         })} ></Button>
     </View>
     );

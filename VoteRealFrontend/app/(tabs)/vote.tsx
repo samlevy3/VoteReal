@@ -4,6 +4,8 @@ import { useAuth } from '../(auth)/provider';
 import Carousel from 'react-native-snap-carousel';
 import { Dimensions } from 'react-native';
 import Card from "react-native-card-component";
+import React from 'react'
+import PaginationDot from 'react-native-insta-pagination-dots'
 
 const { height, width } = Dimensions.get('window');
 const SPACING = 10;
@@ -11,7 +13,7 @@ const THUMB_SIZE = 80;
 
 export default function Vote() {
   const { vote, user } = useAuth();
-
+  
   return (
     <View >
        <Carousel
@@ -27,19 +29,28 @@ export default function Vote() {
                   style={styles.title}
                 />
                 <Card.Row center={true}>
+                  <Card.Col center={true}>
+                    <PaginationDot 
+                        activeDotColor={'black'}
+                        curPage={index}
+                        maxPage={user.currVote ? user.currVote?.summary.length : 0}
+                    />
+                  </Card.Col>
+                </Card.Row>
+                <Card.Row center={true}>
                   <Text style={styles.content}>{item}</Text>
                 </Card.Row>
                 {index == (user.currVote ? user.currVote?.summary.length - 1 : 0) ? 
                   <Card.Row >
                     <Card.Col>
                       <Button text="Yes" onPress={() => {
-                          vote(true); 
+                          vote(user, true); 
                         }}>
                       </Button>
                     </Card.Col>
                     <Card.Col>
                       <Button text="No" onPress={() => {
-                          vote(false); 
+                          vote(user, false); 
                         }}>
                       </Button>
                     </Card.Col>
@@ -48,7 +59,7 @@ export default function Vote() {
             </Card.Content>
           </Card>
         )}
-      />
+      />      
     </View>
   );
 }
@@ -69,7 +80,8 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     color: 'black',
-    lineHeight: 30
+    lineHeight: 30,
+    marginVertical: 10
   },
   separator: {
     marginVertical: 30,
