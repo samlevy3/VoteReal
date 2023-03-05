@@ -102,7 +102,7 @@ export function Provider(props: any) {
         })  
       });
   
-      responseListener.current = Notifications.addNotificationResponseReceivedListener(response => {
+      responseListener.current = Notifications.addNotificationResponseReceivedListener(response => {        
         setAuth(prevState => {
           let newUser: IUser = prevState.user;  
           newUser.currVote = response.notification.request.content.data as IVote; 
@@ -111,7 +111,7 @@ export function Provider(props: any) {
             user: newUser
           }
         }) 
-        router.replace('/(tabs)/vote');        
+        router.replace("/(tabs)/vote");        
       });
   
       return () => {
@@ -139,9 +139,9 @@ export function Provider(props: any) {
       let newUser: IUser = {
         username: login.username,
         password: login.password,
-        councilMembers: [],
         votes: [],
-        currVote: null
+        currVote: null,
+        uuid: "null"
       }
       setAuth(prevState => ({
           ...prevState,
@@ -163,12 +163,13 @@ export function Provider(props: any) {
         newUser.currVote.vote = vote;
         newUser.votes.push(newUser.currVote); 
       }
-      newUser.currVote = null;
       setAuth(prevState => ({
           ...prevState,
           user: newUser
       }));
-      router.replace("/");
+      router.push('/');
+      router.push({pathname: '/history-modal', params: { voteString: JSON.stringify(newUser.currVote)}})
+      newUser.currVote = null;
     };
 
     return (

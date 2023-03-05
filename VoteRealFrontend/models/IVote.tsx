@@ -5,5 +5,6 @@ export default interface IUser {
     summary: string[];
     vote: boolean; 
     councilVotes: ICouncilMemberVote[]; 
+    decision: boolean; 
 }
 

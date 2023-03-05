@@ -50,7 +50,7 @@ function RootLayoutNav() {
               <Stack.Screen name="(auth)/sign-in" options={{ headerShown: false }} />
               <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
               <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
-              <Stack.Screen name="history-modal" options={{ presentation: 'modal' }} />
+              <Stack.Screen name="history-modal" options={{ title: "Summary", presentation: 'modal' }} />
           </Stack>
         </Provider>
       </ThemeProvider>
